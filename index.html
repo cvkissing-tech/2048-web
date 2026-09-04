@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  GAME : 2048
+  FILE : 2048.html   (short-slug filename — matches the keyword)
+  ============================================================
+  SEO CLONING CHECKLIST — when copying this file for a new game,
+  update ALL of the following so they stay consistent:
+
+    1.  <title>                         (line ~"<title>")
+    2.  meta description                (line "name=description")
+    3.  meta keywords                   (line "name=keywords")
+    4.  canonical URL                   (line "rel=canonical")
+    5.  og:title / og:description / og:url / og:image (+ width/height/alt)
+    6.  twitter:card / twitter:image
+    7.  JSON-LD  "name" + "url"
+    8.  <h1> heading
+    9.  Lead paragraph + How-to-play copy (embed keywords naturally)
+   10.  CONFIG  object in the <script>   (name / slug / winValue)
+
+  IMPORTANT: replace every "https://example.com/..." below (canonical,
+  og:url, og:image, twitter:image, JSON-LD url) with your real domain
+  before deploying. You'll also need to create + host a 1200x630
+  share image for og:image / twitter:image.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Play 2048 Online — Free 2048 Game</title>
+<meta name="description" content="Play 2048 online for free — the classic sliding number puzzle. Merge tiles, reach the 2048 tile, and beat your best score. No download, works on phone and desktop.">
+<meta name="keywords" content="2048 game, play 2048 online, free 2048, 2048 puzzle, 2048 online game, 2048 browser game">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#faf8ef">
+<link rel="canonical" href="https://example.com/2048.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Play 2048 Online — Free 2048 Game">
+<meta property="og:description" content="Play 2048 online for free. Merge tiles to reach 2048 and beat your best score — no download, works on any device.">
+<meta property="og:url" content="https://example.com/2048.html">
+<meta property="og:site_name" content="Free Online 2048 Game">
+<meta property="og:image" content="https://example.com/og/2048.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Play 2048 online — free 2048 puzzle game">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Play 2048 Online — Free 2048 Game">
+<meta name="twitter:description" content="Play 2048 online for free. Merge tiles to reach 2048 and beat your best score.">
+<meta name="twitter:image" content="https://example.com/og/2048.png">
+<meta name="twitter:image:alt" content="Play 2048 online — free 2048 puzzle game">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Play 2048 Online — Free 2048 Game",
+  "url": "https://example.com/2048.html",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "description": "Play 2048 online for free. Merge numbered tiles, reach the 2048 tile, and beat your best score.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Play 2048 Online</h1>
+    <p class="subtitle">The free 2048 game — right in your browser</p>
+  </header>
+
+  <div class="scores">
+    <div class="score-box">
+      <div class="label">Score</div>
+      <div class="value" id="score" aria-live="polite">0</div>
+    </div>
+    <div class="score-box">
+      <div class="label">Best</div>
+      <div class="value" id="best" aria-live="polite">0</div>
+    </div>
+  </div>
+
+  <div class="level-bar">
+    <span class="level-label" id="level-label">Level 1 — Target 8</span>
+    <span class="steps-label" id="steps-label">Steps 0</span>
+    <span class="stars-preview" id="stars-preview" aria-hidden="true">★★★</span>
+    <button type="button" class="level-select-btn" id="level-select-btn">Levels</button>
+  </div>
+
+  <div class="demo-text" id="demo-text" hidden>👆 Swipe to merge matching tiles</div>
+
+  <div class="board-wrap">
+    <div class="board" id="board" role="group" aria-label="2048 game board">
+      <div class="message" id="message" hidden role="alertdialog" aria-modal="true" aria-labelledby="message-text">
+        <div class="message-inner">
+          <p id="message-text"></p>
+          <button type="button" id="message-primary"></button>
+          <button type="button" class="secondary" id="message-secondary" hidden></button>
+        </div>
+      </div>
+    </div>
+    <div class="first-hint" id="first-hint" hidden aria-hidden="true"></div>
+    <div class="demo-hand" id="demo-hand" hidden aria-hidden="true">👆</div>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="new-game">Restart</button>
+  </div>
+  <p class="hint">Use the arrow keys, WASD, or swipe to move the tiles.</p>
+
+  <section class="content">
+    <p>Play 2048 online for free — the classic sliding number puzzle, no download or sign-up needed. Combine matching tiles by swiping or pressing the arrow keys, and keep merging until you build the 2048 tile. This free 2048 game works on any device, whether you are on a phone, tablet, or desktop, and it saves your best score automatically. Whether you are learning the 2048 game for the first time or chasing a new high score, this is the perfect place to play 2048 online.</p>
+
+    <h2>How to Play 2048</h2>
+    <ul>
+      <li><strong>Move the tiles</strong> — swipe or press an arrow key to slide every tile in that direction.</li>
+      <li><strong>Merge matching numbers</strong> — when two tiles with the same number touch, they combine into one tile worth double.</li>
+      <li><strong>Reach 2048</strong> — keep merging until you create the 2048 tile. You win, but the game continues.</li>
+      <li><strong>Don't fill the board</strong> — the game ends when the grid is full and no moves remain.</li>
+    </ul>
+
+    <h2>Why Play This 2048 Game?</h2>
+    <p>This 2048 game is fast to load, works offline once opened, and requires no installation. The clean, mobile-friendly board is designed for quick sessions, so you can jump into a free 2048 puzzle anytime and try to beat your personal best.</p>
+  </section>
+
+  <footer>
+    <p>Play 2048 online — a free browser puzzle game.</p>
+  </footer>
+</div>
+
+  <div id="level-select" class="level-select" hidden>
+    <div class="level-select-backdrop"></div>
+    <div class="level-select-card" role="dialog" aria-modal="true" aria-labelledby="level-select-title">
+      <button type="button" class="level-select-close" id="level-select-close" aria-label="Close">✕</button>
+      <h2 class="level-select-title" id="level-select-title">Select Level</h2>
+      <div class="level-grid" id="level-grid"></div>
+    </div>
+  </div>
+
+  <div id="best-toast" class="best-toast" hidden>🏆 New Best!</div>
+
+<noscript>
+  <div style="text-align:center; margin-top:20px;">Please enable JavaScript to play this 2048 game.</div>
+</noscript>
+
+<script src="./js/game.js"></script>
+</body>
+</html>
